@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Lock Auth</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-bottom: 10px;
+        }
+
+        input[type="number"] {
+            padding: 5px;
+            margin-bottom: 20px;
+        }
+
+        input[type="button"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="button"]:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enter the number provided by the smart lock for authentication:</h1>
+    <form id="inputForm">
+        <label for="number">Enter your number (0-49):</label>
+        <input type="number" id="number" min="0" max="50" required>
+        <input type="button" value="Submit" onclick="lookupElement()">
+    </form>
+    <p id="result"></p>
+
+    <script>
+        const n = [7543, 2389, 6741, 5127, 8932, 4265, 3198, 6974, 8456, 1634, 7298, 5873, 3421, 9162, 4758, 8309, 2647, 1987, 5374, 6849, 9128, 3596, 7614, 4287, 6732, 2451, 8945, 8136, 5697, 1297, 3746, 7263, 4819, 9356, 1467, 5278, 6981, 8423, 3168, 6542, 2371, 8796, 3512, 4689, 2713, 9457, 1637, 7469, 8265, 5396];
+
+        function lookupElement() {
+            const numberInput = document.getElementById('number');
+            const resultElement = document.getElementById('result');
+
+            const number = parseInt(numberInput.value, 10);
+
+            if (isNaN(number) || number < 0 || number > 50) {
+                resultElement.textContent = 'Please enter a valid number between 0 and 50.';
+            } else {
+                resultElement.textContent = `Your authentication code is : ${n[number]}`;
+            }
+        }
+    </script>
+</body>
+</html>
